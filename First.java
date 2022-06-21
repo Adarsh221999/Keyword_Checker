@@ -1,4 +1,4 @@
-package Assignments;
+package Com.Assignments;
 
 
 import java.io.File;
@@ -31,56 +31,74 @@ import org.apache.pdfbox.text.PDFTextStripper;
                  File[] fp = input.listFiles();
 
 
+                 Set <String>  keywords = new HashSet<String>();
+                     System.out.print("Enter no of skills to be matched :");
+                       Scanner s = new Scanner(System.in);
+                          int num_skill = s.nextInt();
 
                for (File file : fp) {
-                 PDDocument pdd = new PDDocument();
+            	 PDDocument pdd = new PDDocument();
                  PDFTextStripper stripper = new PDFTextStripper();
                  String resume = stripper.getText(pdd.load(file));
                  String Resume = resume.toLowerCase();
-                 pdd.load(file).close();
-                 System.out.println(Resume);
+                 
+                 
 
-       Set <String>  keywords = new HashSet<String>();
-           System.out.print("Enter no of skills to be matched :");
-             Scanner s = new Scanner(System.in);
-                int num_skill = s.nextInt();
 
-    for(int i=0;i< num_skill;i++)
-      {
-         keywords.add(s.next());
-      }
-//System.out.println(keywords) ;
+                      for(int i=0;i< num_skill;i++)
+                           {
+                              keywords.add(s.next());
+                           }
+                                 //System.out.println(keywords) ;
     
 
-           int count = 0;
-           for (String ele : keywords) {
-           if (Resume.contains(ele)) {
-//System.out.println("yes");
-          count++;
-           }
-         }
-             if (count < 1) {
-               System.out.println("0%");
-             }
-             else if (count == 1) {
-                 System.out.println("YES, 30% Match");
-             }        
-                  else if (count == 2) 
-                  {
-                System.out.println("YES, 60% Match");
-                 }
+                                  int count = 0;
+                                      for (String ele : keywords)
+                                         {
+                                           if (Resume.contains(ele))
+                                        {
+                                           //System.out.println("yes");
+                                          count++;
+                                         }
+                                        
+                                        }
+            
+                                      
+                                         System.out.println(file); 
+                                      
+           
+                                    if (count < 1) {
+                                        System.out.println("0%");
+                                      }
+             
+           
+                                        else if (count == 1)
+                                      {
+                                         System.out.println("YES, 30% Match");
+                                      }        
+                                   
+                                        else if (count == 2) 
+                                      {
+                                        System.out.println("YES, 60% Match");
+                                      }
 
-                  else if(count==3)
-                     {
-               System.out.println("YES, 80% Match");
-                      }
+                                       else if(count==3)
+                                      {
+                                       System.out.println("YES, 80% Match");
+                                      }
               
-                  else if(count>3)
-                    {
-               System.out.println("YES, 100% Match");
-                   }
+                                     else if(count>3)
+                                      {
+                                        System.out.println("YES, 100% Match");
+                                      }
+                  
+                          PDDocument.load(file).close();
+               
+               }
+              
+               
 
-                }
-
-     }
-}
+          }
+           
+   }      
+             
